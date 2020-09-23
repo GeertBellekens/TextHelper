@@ -43,7 +43,7 @@ namespace TextHelper
                 {
                     if (previousLine != null)
                     {
-                        newString += formatLine(previousLine, false, newString == string.Empty, maxLineLenght);
+                        newString += formatLine(previousLine, newString == string.Empty, false, maxLineLenght);
                     }
                     //set the previous line
                     previousLine = line;

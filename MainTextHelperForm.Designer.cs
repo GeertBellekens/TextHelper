@@ -50,9 +50,9 @@
             // 
             this.vbScriptQueryButton.Location = new System.Drawing.Point(12, 12);
             this.vbScriptQueryButton.Name = "vbScriptQueryButton";
-            this.vbScriptQueryButton.Size = new System.Drawing.Size(116, 23);
+            this.vbScriptQueryButton.Size = new System.Drawing.Size(93, 23);
             this.vbScriptQueryButton.TabIndex = 1;
-            this.vbScriptQueryButton.Text = "Vbscript Query";
+            this.vbScriptQueryButton.Text = "SQL -> VBS";
             this.vbScriptQueryButton.UseVisualStyleBackColor = true;
             this.vbScriptQueryButton.Click += new System.EventHandler(this.vbScriptQueryButton_Click);
             // 
@@ -63,6 +63,7 @@
             this.ClientSize = new System.Drawing.Size(1005, 719);
             this.Controls.Add(this.vbScriptQueryButton);
             this.Controls.Add(this.mainTextBox);
+            this.MinimumSize = new System.Drawing.Size(200, 50);
             this.Name = "MainTextHelperForm";
             this.Text = "TextHelper";
             this.ResumeLayout(false);
