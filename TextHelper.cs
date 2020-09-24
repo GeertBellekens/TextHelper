@@ -4,6 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -70,6 +71,13 @@ namespace TextHelper
             return formattedLine;
         }
 
+        /// <summary>
+        /// expands each tab into up to 4 spaces
+        /// copied from StackOverflow: https://stackoverflow.com/questions/508033/convert-tabs-to-spaces-in-a-net-string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="tabLength"></param>
+        /// <returns>the updated string with spaces instead of tabs</returns>
         public static string ExpandTabs(string input, int tabLength = 4)
         {
             string[] parts = input.Split('\t');
@@ -82,24 +90,6 @@ namespace TextHelper
                 count++;
             }
             return (string.Join("", parts));
-        }
-        public static string TabsToSpaces(string inTxt, int tabLen = 4)
-        {
-            var outTxt = new List<string>();
-
-            var textValues = inTxt.Split('\t');
-
-            foreach (var val in textValues)
-            {
-                var lines = val.Split('\r');
-                var preTxt = lines[lines.Length - 1];
-                preTxt = preTxt.Replace("\n", "");
-                var numSpaces = tabLen - preTxt.Length % tabLen;
-                if (numSpaces == 0)
-                    numSpaces = tabLen;
-                outTxt.Add(val + new string(' ', numSpaces));
-            }
-            return String.Join("", outTxt);
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainTextHelperForm));
             this.mainTextBox = new System.Windows.Forms.TextBox();
             this.vbScriptQueryButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -63,6 +64,7 @@
             this.ClientSize = new System.Drawing.Size(1005, 719);
             this.Controls.Add(this.vbScriptQueryButton);
             this.Controls.Add(this.mainTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(200, 50);
             this.Name = "MainTextHelperForm";
             this.Text = "TextHelper";
