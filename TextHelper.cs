@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TextHelper
@@ -16,13 +17,13 @@ namespace TextHelper
         /// adds '" ' (double quote + space) at the front of the each line (except on the first line, there its only a double quote
         /// adds ' " & vbNewLine & _' to each line (with the appropriate amount of spaces, making each line the same length, except for the last line, there the ' & vbNewLine & _ is not added
         /// </summary>
-        /// <param name="query"></param>
+        /// <param name="sqlString"></param>
         /// <returns></returns>
-        public static string formatVbScriptQuery(string query)
+        public static string formatSQLtoVBS(string sqlString)
         {
             int maxLineLenght = 0;
             //get max length of the line in the string
-            using (StringReader reader = new StringReader(query))
+            using (StringReader reader = new StringReader(sqlString))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -37,7 +38,7 @@ namespace TextHelper
             string previousLine = null;
             var newString = string.Empty;
             //now loop again over the lines and add 
-            using (StringReader reader = new StringReader(query))
+            using (StringReader reader = new StringReader(sqlString))
             {
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -69,6 +70,19 @@ namespace TextHelper
             formattedLine = prefix + line + String.Empty.PadLeft(spacedNeeded, ' ') + "\"";
             if (!lastLine) formattedLine += " & vbNewLine & _" + Environment.NewLine;
             return formattedLine;
+        }
+        public static string formatVBStoSQL(string vbsString)
+        {
+            var sqlString = vbsString;
+            //remove '" ' (with or without space) at the beginning of the line
+            var prefixRegex = new Regex(@"^([\t]+)?""[ ]?", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+            sqlString = prefixRegex.Replace(sqlString, string.Empty);
+            //remove trailing '" & vbNewLine & _
+            var suffixRegex = new Regex(@"(\s+)?""( & vbNewLine & _)?\r?$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+            //add the newline again
+            sqlString = suffixRegex.Replace(sqlString, "\r");
+            //return
+            return sqlString;
         }
 
         /// <summary>

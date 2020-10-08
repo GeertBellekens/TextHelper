@@ -41,7 +41,16 @@ namespace TextHelper
 
         private void vbScriptQueryButton_Click(object sender, EventArgs e)
         {
-            this.mainTextBox.Text = TextHelper.formatVbScriptQuery(this.mainTextBox.Text);
+            this.mainTextBox.Text = TextHelper.formatSQLtoVBS(this.mainTextBox.Text);
+            this.mainTextBox.SelectAll();
+            this.mainTextBox.Focus();
+        }
+
+        private void VBStoSQLButton_Click(object sender, EventArgs e)
+        {
+            this.mainTextBox.Text = TextHelper.formatVBStoSQL(this.mainTextBox.Text);
+            this.mainTextBox.SelectAll();
+            this.mainTextBox.Focus();
         }
     }
 }
