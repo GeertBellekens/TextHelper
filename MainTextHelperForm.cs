@@ -52,5 +52,11 @@ namespace TextHelper
             this.mainTextBox.SelectAll();
             this.mainTextBox.Focus();
         }
+
+        private void mainTextBox_TextChanged(object sender, EventArgs e)
+        {
+            //replace LF with CR+LF
+            this.mainTextBox.Text = this.mainTextBox.Text.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "\r\n");
+        }
     }
 }

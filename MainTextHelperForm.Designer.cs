@@ -48,6 +48,7 @@
             this.mainTextBox.Size = new System.Drawing.Size(981, 666);
             this.mainTextBox.TabIndex = 0;
             this.mainTextBox.WordWrap = false;
+            this.mainTextBox.TextChanged += new System.EventHandler(this.mainTextBox_TextChanged);
             // 
             // vbScriptQueryButton
             // 
