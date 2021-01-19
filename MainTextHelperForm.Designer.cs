@@ -49,6 +49,7 @@
             this.mainTextBox.TabIndex = 0;
             this.mainTextBox.WordWrap = false;
             this.mainTextBox.TextChanged += new System.EventHandler(this.mainTextBox_TextChanged);
+            this.mainTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainTextBox_KeyDown);
             // 
             // vbScriptQueryButton
             // 

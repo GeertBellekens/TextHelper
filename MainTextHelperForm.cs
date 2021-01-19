@@ -58,5 +58,14 @@ namespace TextHelper
             //replace LF with CR+LF
             this.mainTextBox.Text = this.mainTextBox.Text.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", "\r\n");
         }
+
+        private void mainTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                if (sender != null)
+                    ((TextBox)sender).SelectAll();
+            }
+        }
     }
 }
